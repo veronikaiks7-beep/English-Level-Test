@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по английскому языку (уровень)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f9ff;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #1976d2;
+        }
+        .question {
+            background: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+        }
+        label {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 8px;
+            background: #e3f2fd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 6px;
+        }
+        button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            font-size: 16px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0d47a1;
+        }
+        .result {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .result h3 {
+            margin: 0 0 10px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📋 Определение уровня английского языка</h1>
+<p style="text-align:center">Ответьте на 10 вопросов. После проверки узнаете свой уровень.</p>
+
+<form id="testForm">
+    <!-- Вопрос 1 -->
+    <div class="question">
+        <p>1. This ____ a table.</p>
+        <label><input type="radio" name="q1" value="are"> are</label>
+        <label><input type="radio" name="q1" value="be"> be</label>
+        <label><input type="radio" name="q1" value="is"> is</label>
+    </div>
+    <!-- Вопрос 2 -->
+    <div class="question">
+        <p>2. I ____ breakfast every morning.</p>
+        <label><input type="radio" name="q2" value="eat"> eat</label>
+        <label><input type="radio" name="q2" value="have"> have</label>
+        <label><input type="radio" name="q2" value="am having"> am having</label>
+    </div>
+    <!-- Вопрос 3 -->
+    <div class="question">
+        <p>3. She ____ to school yesterday.</p>
+        <label><input type="radio" name="q3" value="go"> go</label>
+        <label><input type="radio" name="q3" value="went"> went</label>
+        <label><input type="radio" name="q3" value="goes"> goes</label>
+    </div>
+    <!-- Вопрос 4 -->
+    <div class="question">
+        <p>4. ____ you ever been to London?</p>
+        <label><input type="radio" name="q4" value="Did"> Did</label>
+        <label><input type="radio" name="q4" value="Have"> Have</label>
+        <label><input type="radio" name="q4" value="Has"> Has</label>
+    </div>
+    <!-- Вопрос 5 -->
+    <div class="question">
+        <p>5. If it rains tomorrow, we ____ stay at home.</p>
+        <label><input type="radio" name="q5" value="will"> will</label>
+        <label><input type="radio" name="q5" value="would"> would</label>
+        <label><input type="radio" name="q5" value="stay"> stay</label>
+    </div>
+    <!-- Вопрос 6 -->
+    <div class="question">
+        <p>6. The movie was ____ than the book.</p>
+        <label><input type="radio" name="q6" value="more interesting"> more interesting</label>
+        <label><input type="radio" name="q6" value="interesting"> interesting</label>
+        <label><input type="radio" name="q6" value="most interesting"> most interesting</label>
+    </div>
+    <!-- Вопрос 7 -->
+    <div class="question">
+        <p>7. While I ____ TV, the phone rang.</p>
+        <label><input type="radio" name="q7" value="watched"> watched</label>
+        <label><input type="radio" name="q7" value="was watching"> was watching</label>
+        <label><input type="radio" name="q7" value="watch"> watch</label>
+    </div>
+    <!-- Вопрос 8 -->
+    <div class="question">
+        <p>8. He said that he ____ come to the party.</p>
+        <label><input type="radio" name="q8" value="will"> will</label>
+        <label><input type="radio" name="q8" value="would"> would</label>
+        <label><input type="radio" name="q8" value="can"> can</label>
+    </div>
+    <!-- Вопрос 9 -->
+    <div class="question">
+        <p>9. I'm looking forward ____ you.</p>
+        <label><input type="radio" name="q9" value="to see"> to see</label>
+        <label><input type="radio" name="q9" value="to seeing"> to seeing</label>
+        <label><input type="radio" name="q9" value="seeing"> seeing</label>
+    </div>
+    <!-- Вопрос 10 -->
+    <div class="question">
+        <p>10. If I ____ you, I would say sorry.</p>
+        <label><input type="radio" name="q10" value="were"> were</label>
+        <label><input type="radio" name="q10" value="was"> was</label>
+        <label><input type="radio" name="q10" value="am"> am</label>
+    </div>
+
+    <button type="button" onclick="checkTest()">Проверить результат</button>
+</form>
+
+<div id="resultBlock" class="result">
+    <h3>Ваш результат</h3>
+    <p id="scoreMessage"></p>
+    <p id="levelMessage"></p>
+    <p id="recommendation"></p>
+</div>
+
+<script>
+    // Правильные ответы (массив с правильными вариантами)
+    const correctAnswers = [
+        "is",        // q1
+        "have",      // q2
+        "went",      // q3
+        "Have",      // q4
+        "will",      // q5
+        "more interesting", // q6
+        "was watching",      // q7
+        "would",     // q8
+        "to seeing", // q9 (look forward to + ing)
+        "were"       // q10 (I wish / If I were)
+    ];
+
+    function checkTest() {
+        let score = 0;
+        // Проверяем каждый вопрос
+        for (let i = 1; i <= 10; i++) {
+            const radios = document.getElementsByName(`q${i}`);
+            let selectedValue = null;
+            for (let radio of radios) {
+                if (radio.checked) {
+                    selectedValue = radio.value;
+                    break;
+                }
+            }
+            if (selectedValue === correctAnswers[i-1]) {
+                score++;
+            }
+        }
+
+        // Определяем уровень
+        let level = "";
+        let recommendation = "";
+        if (score <= 4) {
+            level = "Начинающий (Beginner / Elementary)";
+            recommendation = "Рекомендуем начать с учебника: English World 1 или Solutions Elementary (начало). Нужно повторить базовую грамматику (to be, Present Simple, Past Simple).";
+        } else if (score <= 7) {
+            level = "Средний (Pre-Intermediate)";
+            recommendation = "Рекомендуем Solutions Pre-Intermediate. У вас хорошая база, но есть пробелы во временах и условных предложениях.";
+        } else {
+            level = "Продвинутый (Intermediate+)";
+            recommendation = "Рекомендуем Solutions Intermediate или American Headway 3. Вы уверенно владеете грамматикой, можно переходить к сложным темам (Reported Speech, Conditionals).";
+        }
+
+        // Показываем результат
+        document.getElementById("scoreMessage").innerHTML = `Правильных ответов: ${score} из 10`;
+        document.getElementById("levelMessage").innerHTML = `<strong>Ваш уровень: ${level}</strong>`;
+        document.getElementById("recommendation").innerHTML = recommendation;
+        document.getElementById("resultBlock").style.display = "block";
+
+        // (Необязательно) сохраняем результат в localStorage как в примере университета
+        localStorage.setItem("test_result", JSON.stringify({
+            date: new Date().toLocaleString(),
+            score: score,
+            level: level
+        }));
+    }
+</script>
+
+</body>
+</html>
